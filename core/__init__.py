@@ -5,3 +5,4 @@
 # @Email: karl.wang.1991@gmail.com
 
 from .Crawler import Crawler
+from .LoadConfig import *

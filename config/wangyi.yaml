@@ -1,0 +1,31 @@
+common:
+  - content: &common
+      top_news:
+        selector: '.topnews_nlist h3 a'
+        property: null
+      top_rank:
+        selector: '.top_ranklist a'
+        property: 'title'
+
+news:
+  money:
+    name: '金融'
+    url: 'http://money.163.com/'
+    single: true
+    contents:
+      top_news:
+        p_selector: ''
+        title_selector: '.topnews_nlist h3 a'
+        property: null
+        link_selector: ''
+      top_rank:
+        p_selector: ''
+        title_selector: '.top_ranklist a'
+        property: 'title'
+
+  tech:
+    name: '科技'
+    url: 'http://tech.163.com/'
+    single: true
+    contents:
+      <<: *common

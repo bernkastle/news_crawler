@@ -7,13 +7,17 @@
 from bs4 import BeautifulSoup
 
 
-def wangyi_money_parse(text: BeautifulSoup) -> [str]:
+def wangyi_money_parse(text: BeautifulSoup, contents: dict) -> [str]:
     """
     网易新闻首页要闻，评论，点击榜新闻
     :return: 返回新闻列表
     """
-    bbs_rank = [x['title'] for x in text.select('.bbs_ranklist a')]
-    top_rank = [x['title'] for x in text.select('.top_ranklist a')]
-    top_news = [x['title'] for x in text.select('.top_ranklist a')]
+    news = []
+    for news_type in contents:
+        content = contents[news_type]
+        title_selector = content['title_selector']
+        prop = content['property']
+        temp = [x[prop] for x in text.select(title_selector)] if prop else [x.get_text() for x in text.select(title_selector)]
+        news.append({news_type: temp})
 
-    return top_news + top_rank + bbs_rank
+    return news
