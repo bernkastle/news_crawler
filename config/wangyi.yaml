@@ -14,18 +14,38 @@ news:
     single: true
     contents:
       top_news:
-        p_selector: ''
-        title_selector: '.topnews_nlist h3 a'
-        property: null
-        link_selector: ''
+        p_selector: '.topnews_nlist h3'
+        title_selector: 'a'
+        title_property: null
+        link_selector: 'a'
+        link_property: 'href'
       top_rank:
-        p_selector: ''
-        title_selector: '.top_ranklist a'
-        property: 'title'
+        p_selector: '.top_ranklist'
+        title_selector: 'a'
+        title_property: 'title'
+        link_selector: 'a'
+        link_property: 'href'
 
   tech:
     name: '科技'
     url: 'http://tech.163.com/'
     single: true
     contents:
-      <<: *common
+      top_news:
+        p_selector: '.banner_main a'
+        title_selector: '.img_title'
+        title_property: null
+        link_selector: ''
+        link_property: 'href'
+      top_news2:
+        p_selector: '.banner_desc'
+        title_selector: 'p'
+        title_property: null
+        link_selector: 'a'
+        link_property: 'href'
+      news:
+        p_selector: '.nl_detail'
+        title_selector: '.nl-title'
+        title_property: null
+        link_selector: ''
+        link_property: 'href'
