@@ -10,7 +10,7 @@ import yaml
 
 def _load_config(website: str):
     with open(f'config/{website}.yaml', 'r', encoding='utf-8') as configs:
-        return yaml.load(configs)['news']
+        return yaml.full_load(configs)['news']
 
 
 load_config_wangyi = partial(_load_config, website='wangyi')

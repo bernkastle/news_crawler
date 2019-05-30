@@ -11,14 +11,26 @@ import aiohttp
 
 
 class Http:
+    """
+    控制异步并发量
+    """
     def __init__(self, pool):
         self.sem = asyncio.Semaphore(pool)
 
     async def __aenter__(self):
+        """
+        控制异步初始化
+        :return:
+        """
         self._session = aiohttp.ClientSession()
         return self
 
     async def __aexit__(self, *err):
+        """
+        异步析构函数
+        :param err:
+        :return:
+        """
         await self._session.close()
         self._session = None
 
